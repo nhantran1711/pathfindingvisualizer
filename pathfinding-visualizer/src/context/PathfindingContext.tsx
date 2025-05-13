@@ -1,6 +1,6 @@
 // Shape of the Context value
 import type { ReactNode } from "react";
-import { Children, createContext, useState } from "react";
+import { createContext, useState } from "react";
 import type { AlgorithmType, GridType, MazeType } from "../utls/types";
 import { createGrid } from "../utls/helpers";
 import { END_TILE_CONFIG, START_TILE_CONFIG } from "../utls/constants";
