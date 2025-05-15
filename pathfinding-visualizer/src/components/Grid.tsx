@@ -5,6 +5,7 @@ import { Tile } from "./Tile";
 
 export function Grid() {
     const {grid} = usePathfinding();
+    console.log('Grid inside Grid component:', grid);
 
     return (
         <div
@@ -14,14 +15,16 @@ export function Grid() {
                 // Control grid height
                 `lg:min-h-[${MAX_ROWS * 18}px]  md:min-h-[${MAX_ROWS * 15}px] xs:min-h-[${MAX_ROWS * 8}px] min-h-[${MAX_ROWS * 7}px]`,
                 // Control grid width
-                `lg:min-h-[${MAX_COLS * 18}px]  md:min-h-[${MAX_COLS * 15}px] xs:min-h-[${MAX_COLS * 8}px] min-h-[${MAX_COLS * 7}px]`
+                `lg:min-w-[${MAX_COLS * 18}px]  md:min-w-[${MAX_COLS * 15}px] xs:min-w-[${MAX_COLS * 8}px] min-w-[${MAX_COLS * 7}px]`
             )}
         >
 
             {grid.map((row, rowIndex) => (
+                
                 <div key={rowIndex} className="flex"> 
                     {row.map((tile, tileIndex) => {
                         const {isStart, isEnd, isPath, isTraversed, isWall} = tile;
+                        console.log(`Tile at row:${tile.row}, col:${tile.col}, isStart: ${isStart}`);
                         return (
                             <Tile 
                                 key = {tileIndex}
@@ -33,7 +36,9 @@ export function Grid() {
                                 isPath = {isPath}
                                 isTraversed = {isTraversed}
                             />
+                            
                         )
+                        
                     }
                 )}
                 </div>

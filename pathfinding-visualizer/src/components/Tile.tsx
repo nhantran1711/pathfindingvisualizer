@@ -20,9 +20,9 @@ export function Tile({
 }) {
     let tileTileStyle;
 
-    if (isStart) {
+    if (isStart == true) {
         tileTileStyle = START_TILE_STYLE;
-    } else if (isEnd) {
+    } else if (isEnd == true) {
         tileTileStyle = END_TILE_STYLE;
     } else if (isWall) {
         tileTileStyle = WALL_TILE_STYLE;
