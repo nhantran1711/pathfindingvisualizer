@@ -35,3 +35,29 @@ export const createGrid = (startTile: TileType, endTile: TileType) => {
     }
     return grid;
 }
+
+
+// Check if it starts or ends
+export const checkIsStartOrEnd = (row: number, col: number ) => {
+    if (row === 1 && col === 1) {
+        return true;
+    }
+    else if (row === MAX_ROWS - 2 && col === MAX_COLS - 2) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+// Create a new grid when generate the wall
+export const createNewGrid = (grid: GridType, row: number, col: number) => {
+    const newGrid = grid.map(r => [...r]); // shallow clone rows 
+    const newTile = {
+        ...newGrid[row][col], // copy tile
+        isWall: !newGrid[row][col].isWall, // toggle create wall
+    }
+
+    newGrid[row][col] = newTile;
+    return newGrid;
+}

@@ -37,7 +37,7 @@ export const BASE_TILE_STYLE = "lg:w-[17px] md:w-[15px] xs:w-[8px] w-[7px] lg:h-
 export const TRAVERSED_TILE_STYLE = BASE_TILE_STYLE + " bg-cyan-400";
 export const START_TILE_STYLE = BASE_TILE_STYLE + " bg-green-400";
 export const END_TILE_STYLE = BASE_TILE_STYLE + " bg-red-400";
-export const WALL_TILE_STYLE = BASE_TILE_STYLE + " bg-grey-400";
+export const WALL_TILE_STYLE = BASE_TILE_STYLE + " bg-gray-400";
 export const PATH_TILE_STYLE = BASE_TILE_STYLE + " bg-green-500";
 
 
