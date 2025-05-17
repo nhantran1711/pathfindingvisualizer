@@ -56,7 +56,7 @@ export function Grid({isVisualizationRunningRef} : {isVisualizationRunningRef: R
         <div
             className={twMerge(
                 // Base classes
-                "flex items-center flex-col justify-center border-sky-300",
+                "flex items-center flex-col justify-center border-sky-300 mt-5",
                 // Control grid height
                 `lg:min-h-[${MAX_ROWS * 18}px]  md:min-h-[${MAX_ROWS * 15}px] xs:min-h-[${MAX_ROWS * 8}px] min-h-[${MAX_ROWS * 7}px]`,
                 // Control grid width

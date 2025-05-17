@@ -1,5 +1,7 @@
 // Number of Rows and Cols in the Grid
 
+import type { MazeSelectType} from "./types";
+
 export const MAX_ROWS = 40;
 export const MAX_COLS = 50;
 
@@ -41,3 +43,9 @@ export const WALL_TILE_STYLE = BASE_TILE_STYLE + " bg-gray-400";
 export const PATH_TILE_STYLE = BASE_TILE_STYLE + " bg-green-500";
 
 
+// Maze constant
+export const MAZE: MazeSelectType[] = [
+    {name: "NONE", value: "NONE"},
+    {name: "BINARY TREE", value: "BINARY_TREE"},
+    {name: "RECURSIVE", value: "RECURSIVE"}
+]
