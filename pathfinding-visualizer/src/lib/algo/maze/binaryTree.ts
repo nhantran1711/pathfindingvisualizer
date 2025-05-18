@@ -2,6 +2,7 @@
 
 // Generate maze using Binary Tree
 
+import { createWall } from "../../../utls/createWall";
 import type { GridType, SpeedType, TileType } from "../../../utls/types";
 
 export const binaryTree = async (
@@ -11,5 +12,6 @@ export const binaryTree = async (
     setIsDisabled: (isDisabled: boolean) =>  void,
     speed: SpeedType
 ) => {
-    createWall()
+    createWall(startTile, endTile, speed)
+    await sleep
 }

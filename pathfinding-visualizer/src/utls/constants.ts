@@ -1,6 +1,6 @@
 // Number of Rows and Cols in the Grid
 
-import type { MazeSelectType} from "./types";
+import type { MazeSelectType, SpeedSelectType} from "./types";
 
 export const MAX_ROWS = 40;
 export const MAX_COLS = 50;
@@ -48,4 +48,10 @@ export const MAZE: MazeSelectType[] = [
     {name: "NONE", value: "NONE"},
     {name: "BINARY TREE", value: "BINARY_TREE"},
     {name: "RECURSIVE_DIV", value: "RECURSIVE_DIV"}
+]
+
+export const SPEEDS: SpeedSelectType[] = [
+    {name: "Slow", value: 3},
+    {name: "Normal", value: 2},
+    {name: "Fast", value: 0.5}
 ]

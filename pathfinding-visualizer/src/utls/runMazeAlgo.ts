@@ -16,6 +16,6 @@ export const runMazeAlgo = async ({
     speed: SpeedType;
 }) => {
     if ( maze === "BINARY_TREE") {
-        await binary_tree(grid, startTile, endTile, setIsDisabled, speed)
+        await binaryTree(grid, startTile, endTile, setIsDisabled, speed)
     }
 }

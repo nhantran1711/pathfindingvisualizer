@@ -63,9 +63,17 @@ export const createNewGrid = (grid: GridType, row: number, col: number) => {
 }
 
 
-// equals
+// Tile equals
 export const isEqual = (x: TileType, y: TileType) => {
     if (x.row === y.row && x.col === y.col) {
+        return true;
+    }
+    return false;
+}
+
+// Is row and col equals?
+export const isRowAndColEqual = (row: number, col: number, tile: TileType) => {
+    if (row === tile.row && col === tile.col) {
         return true;
     }
     return false;
