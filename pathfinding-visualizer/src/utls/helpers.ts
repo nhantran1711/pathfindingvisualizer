@@ -78,3 +78,7 @@ export const isRowAndColEqual = (row: number, col: number, tile: TileType) => {
     }
     return false;
 }
+
+export const sleep = (ms: number) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
