@@ -1,4 +1,5 @@
 import { binaryTree } from "../lib/algo/maze/binaryTree";
+import { constructBorder } from "./constructBorder";
 import type { GridType, MazeType, SpeedType, TileType } from "./types";
 
 export const runMazeAlgo = async ({
@@ -18,5 +19,8 @@ export const runMazeAlgo = async ({
 }) => {
     if ( maze === "BINARY_TREE") {
         await binaryTree(grid, startTile, endTile, setIsDisabled, speed)
+    }
+    else if (maze === "RECURSIVE_DIV") {
+        await constructBorder(grid, startTile, endTile)
     }
 }
