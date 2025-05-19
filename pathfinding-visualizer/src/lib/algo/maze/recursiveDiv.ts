@@ -1,4 +1,5 @@
-import type { GridType, TileType } from "../../../utls/types";
+import type { GridType, SpeedType, TileType } from "../../../utls/types";
+import { horizontalDiv } from "./horizontalDiv";
 
 export async function recursiveDiv({
     grid,
@@ -19,7 +20,7 @@ export async function recursiveDiv({
     height: number;
     width: number;
     setIsDisabled: (isDisabled: boolean) => void;
-    speed: number
+    speed: SpeedType
 }) {
     // Base case
     if (height <= 1 || width <= 1) {
@@ -28,6 +29,28 @@ export async function recursiveDiv({
 
     // Define horizontaly if height of the grid is greated then width of the grid
     if (height > width) {
-        await createHorizont
+        await horizontalDiv({
+            grid,
+            startTile,
+            endTile,
+            row,
+            col,
+            height,
+            width,
+            setIsDisabled,
+            speed,
+        });
+    } else {
+        await verticalDiv({
+            grid,
+            startTile,
+            endTile,
+            row,
+            col,
+            height,
+            width,
+            setIsDisabled,
+            speed,
+        })
     }
 }
