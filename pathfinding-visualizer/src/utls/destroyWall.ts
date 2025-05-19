@@ -13,19 +13,20 @@ export const destroyWall = async (
   let targetRow = row;
   let targetCol = col;
 
-  if (isRight && grid[row][col + 1]) {
+  if (isRight && grid[row]?.[col + 1]) {
     targetCol = col + 1;
-  } else if (grid[row + 1]) {
+  } else if (grid[row + 1]?.[col]) {
     targetRow = row + 1;
   }
 
   grid[targetRow][targetCol].isWall = false;
+
   const tileElement = document.getElementById(`${targetRow}-${targetCol}`);
   if (tileElement) {
     tileElement.classList = BASE_TILE_STYLE;
   }
-  
 
-  const delay = 20 * SPEEDS.find((s) => s.value === speed)!.value - 5;
+  const speedSetting = SPEEDS.find((s) => s.value === speed);
+  const delay = speedSetting ? 20 * speedSetting.value - 5 : 50;
   await sleep(delay);
 };

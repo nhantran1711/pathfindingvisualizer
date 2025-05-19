@@ -1,3 +1,4 @@
+import { binaryTree } from "../lib/algo/maze/binaryTree";
 import type { GridType, MazeType, SpeedType, TileType } from "./types";
 
 export const runMazeAlgo = async ({

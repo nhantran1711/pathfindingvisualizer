@@ -82,3 +82,12 @@ export const isRowAndColEqual = (row: number, col: number, tile: TileType) => {
 export const sleep = (ms: number) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+// randomize function lol
+export const getRandInt = (min: number, max: number) => {
+    min = Math.ceil(min);
+    max = Math.ceil(max);
+    let num = 0;
+    num = Math.floor(Math.random() * (max - min) + min);
+    return num;
+}
