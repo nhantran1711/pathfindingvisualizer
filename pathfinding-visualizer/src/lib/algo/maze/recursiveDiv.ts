@@ -12,7 +12,7 @@ export async function recursiveDiv({
     width,
     setIsDisabled,
     speed
-} : {
+}: {
     grid: GridType;
     startTile: TileType;
     endTile: TileType;
@@ -21,37 +21,16 @@ export async function recursiveDiv({
     height: number;
     width: number;
     setIsDisabled: (isDisabled: boolean) => void;
-    speed: SpeedType
+    speed: SpeedType;
 }) {
-    // Base case
+    // Base case: stop if area too small to divide
     if (height <= 1 || width <= 1) {
         return;
     }
 
-    // Define horizontaly if height of the grid is greated then width of the grid
     if (height > width) {
-        await horizontalDiv({
-            grid,
-            startTile,
-            endTile,
-            row,
-            col,
-            height,
-            width,
-            setIsDisabled,
-            speed,
-        });
+        await horizontalDiv({ grid, startTile, endTile, row, col, height, width, setIsDisabled, speed });
     } else {
-        await verticalDiv({
-            grid,
-            startTile,
-            endTile,
-            row,
-            col,
-            height,
-            width,
-            setIsDisabled,
-            speed,
-        })
+        await verticalDiv({ grid, startTile, endTile, row, col, height, width, setIsDisabled, speed });
     }
 }

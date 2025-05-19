@@ -35,10 +35,10 @@ export const runMazeAlgo = async ({
             grid,
             startTile,
             endTile,
-            row: 1, // Start one row down from the top to leave the border
-            col: 1, // Start one column in from the left to leave the border
-            height: Math.floor(MAX_ROWS - 1) / 2, // Inner grid height
-            width: Math.floor(MAX_COLS - 1) / 2, // Inner grid width
+            row: 0, // Start one row down from the top to leave the border
+            col: 0, // Start one column in from the left to leave the border
+            height: MAX_ROWS , // Inner grid height
+            width: MAX_COLS , // Inner grid width
             setIsDisabled,
             speed
             }
