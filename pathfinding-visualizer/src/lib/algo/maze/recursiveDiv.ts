@@ -1,5 +1,6 @@
 import type { GridType, SpeedType, TileType } from "../../../utls/types";
 import { horizontalDiv } from "./horizontalDiv";
+import { verticalDiv } from "./verticalDiv";
 
 export async function recursiveDiv({
     grid,
