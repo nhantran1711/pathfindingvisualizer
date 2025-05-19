@@ -1,7 +1,7 @@
-import { SPEEDS, WALL_TILE_STYLE } from "../../../utils/constants";
-import { getRandInt, isEqual, sleep } from "../../../utils/helpers";
-import { GridType, SpeedType, TileType } from "../../../utils/types";
-import recursiveDivision from "./recursiveDivision";
+import { SPEEDS, WALL_TILE_STYLE } from "../../../utls/constants";
+import { getRandInt, isEqual, sleep } from "../../../utls/helpers";
+import type { GridType, SpeedType, TileType } from "../../../utls/types";
+import recursiveDiv from "./recursiveDiv";
 
 export async function horizontalDivision({
   grid,
@@ -45,7 +45,7 @@ export async function horizontalDivision({
   }
 
   // Recursively divide the sections above and below the wall
-  await recursiveDivision({
+  await recursiveDiv({
     grid,
     startTile,
     endTile,
@@ -56,7 +56,7 @@ export async function horizontalDivision({
     setIsDisabled,
     speed,
   });
-  await recursiveDivision({
+  await recursiveDiv({
     grid,
     startTile,
     endTile,

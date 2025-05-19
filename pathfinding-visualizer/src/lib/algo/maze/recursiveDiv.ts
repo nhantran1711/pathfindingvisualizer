@@ -1,8 +1,8 @@
-import { GridType, SpeedType, TileType } from "../../../utils/types";
-import { horizontalDivision } from "./horizontalDivision";
-import { verticalDivision } from "./verticalDivision";
+import type { GridType, SpeedType, TileType } from "../../../utls/types";
+import { horizontalDivision } from "./horizontalDiv";
+import { verticalDiv } from "./verticalDiv";
 
-export default async function recursiveDivision({
+export default async function recursiveDiv({
   grid,
   startTile,
   endTile,
@@ -41,7 +41,7 @@ export default async function recursiveDivision({
       speed,
     });
   } else {
-    await verticalDivision({
+    await verticalDiv({
       // Divide vertically if width is greater than or equal to height
       grid,
       startTile,
