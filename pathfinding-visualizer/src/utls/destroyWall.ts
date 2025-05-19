@@ -1,8 +1,7 @@
-import { BASE_TILE_STYLE, SPEEDS } from "./constants";
+import { SPEEDS, TILE_STYLE } from "./constants";
 import { sleep } from "./helpers";
-import type { GridType, SpeedType } from "./types";
+import { GridType, SpeedType } from "./types";
 
-// Remove the tile and pause while updating the TileStyle on the specified tile
 export const destroyWall = async (
   grid: GridType,
   row: number,
@@ -10,23 +9,17 @@ export const destroyWall = async (
   isRight: number,
   speed: SpeedType
 ) => {
-  let targetRow = row;
-  let targetCol = col;
-
-  if (isRight && grid[row]?.[col + 1]) {
-    targetCol = col + 1;
-  } else if (grid[row + 1]?.[col]) {
-    targetRow = row + 1;
+  if (isRight && grid[row][col + 1]) {
+    grid[row][col + 1].isWall = false;
+    document.getElementById(`${row}-${col + 1}`)!.className = TILE_STYLE;
+    await sleep(20 * SPEEDS.find((s) => s.value === speed)!.value - 5);
+  } else if (grid[row + 1]) {
+    grid[row + 1][col].isWall = false;
+    document.getElementById(`${row + 1}-${col}`)!.className = TILE_STYLE;
+    await sleep(20 * SPEEDS.find((s) => s.value === speed)!.value - 5);
+  } else {
+    grid[row][col].isWall = false;
+    document.getElementById(`${row}-${col}`)!.className = TILE_STYLE;
+    await sleep(20 * SPEEDS.find((s) => s.value === speed)!.value - 5);
   }
-
-  grid[targetRow][targetCol].isWall = false;
-
-  const tileElement = document.getElementById(`${targetRow}-${targetCol}`);
-  if (tileElement) {
-    tileElement.classList = BASE_TILE_STYLE;
-  }
-
-  const speedSetting = SPEEDS.find((s) => s.value === speed);
-  const delay = speedSetting ? 20 * speedSetting.value - 5 : 50;
-  await sleep(delay);
 };

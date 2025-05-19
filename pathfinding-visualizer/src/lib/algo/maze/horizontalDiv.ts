@@ -1,64 +1,70 @@
-import { SPEEDS, WALL_TILE_STYLE } from "../../../utls/constants";
-import { getRandInt, isEqual, sleep } from "../../../utls/helpers";
-import type { GridType, SpeedType, TileType } from "../../../utls/types";
-import { recursiveDiv } from "./recursiveDiv";
+import { SPEEDS, WALL_TILE_STYLE } from "../../../utils/constants";
+import { getRandInt, isEqual, sleep } from "../../../utils/helpers";
+import { GridType, SpeedType, TileType } from "../../../utils/types";
+import recursiveDivision from "./recursiveDivision";
 
-export async function horizontalDiv({
+export async function horizontalDivision({
+  grid,
+  startTile,
+  endTile,
+  row,
+  col,
+  height,
+  width,
+  setIsDisabled,
+  speed,
+}: {
+  grid: GridType;
+  startTile: TileType;
+  endTile: TileType;
+  row: number;
+  col: number;
+  height: number;
+  width: number;
+  setIsDisabled: (disabled: boolean) => void;
+  speed: SpeedType;
+}) {
+  const makeWallAt = row + getRandInt(0, height - 1) * 2 + 1; // Determine the row to place the wall
+  const makePassageAt = col + getRandInt(0, width) * 2; // Determine the column to leave a passage
+
+  for (let i = 0; i < 2 * width - 1; i += 1) {
+    // Create the horizontal wall
+    if (makePassageAt !== col + i) {
+      if (
+        !isEqual(grid[makeWallAt][col + i], startTile) && // Check if the current tile is not the start tile
+        !isEqual(grid[makeWallAt][col + i], endTile) // Check if the current tile is not the end tile
+      ) {
+        grid[makeWallAt][col + i].isWall = true; // Set the current tile as a wall
+
+        document.getElementById(
+          `${makeWallAt}-${col + i}`
+        )!.className = `${WALL_TILE_STYLE} animate-wall`; // Add wall style and animation
+        await sleep(10 * SPEEDS.find((s) => s.value === speed)!.value - 5); // Wait for animation
+      }
+    }
+  }
+
+  // Recursively divide the sections above and below the wall
+  await recursiveDivision({
     grid,
     startTile,
     endTile,
     row,
     col,
-    height,
+    height: (makeWallAt - row + 1) / 2,
     width,
     setIsDisabled,
-    speed
-}: {
-    grid: GridType;
-    startTile: TileType;
-    endTile: TileType;
-    row: number;
-    col: number;
-    height: number;
-    width: number;
-    setIsDisabled: (isDisabled: boolean) => void;
-    speed: SpeedType;
-}) {
-    // Possible wall rows: odd rows inside the section (excluding borders)
-    const possibleWallRows = [];
-    for (let r = row + 1; r < row + height - 1; r += 2) {
-        possibleWallRows.push(r);
-    }
-
-    // If no valid wall row (section too thin), return
-    if (possibleWallRows.length === 0) return;
-
-    const makeWall = possibleWallRows[getRandInt(0, possibleWallRows.length - 1)];
-
-    // Possible passage columns: even columns inside the section (including borders)
-    const possiblePassageCols = [];
-    for (let c = col; c < col + width; c += 2) {
-        possiblePassageCols.push(c);
-    }
-
-    const makePassage = possiblePassageCols[getRandInt(0, possiblePassageCols.length - 1)];
-
-    // Build horizontal wall at makeWall except at passage column
-    for (let c = col; c < col + width; c++) {
-        if (c !== makePassage && !isEqual(grid[makeWall][c], startTile) && !isEqual(grid[makeWall][c], endTile)) {
-            grid[makeWall][c].isWall = true;
-            const tileElement = document.getElementById(`${makeWall}-${c}`);
-            if (tileElement) {
-                tileElement.className = `${WALL_TILE_STYLE} animate-wall`;
-            }
-            await sleep(10 * (SPEEDS.find((s) => s.value === speed)?.value ?? 1) - 5);
-        }
-    }
-
-    // Recursively divide top and bottom sub-sections
-    const topHeight = makeWall - row;
-    const bottomHeight = row + height - makeWall - 1;
-
-    await recursiveDiv({ grid, startTile, endTile, row, col, height: topHeight, width, setIsDisabled, speed });
-    await recursiveDiv({ grid, startTile, endTile, row: makeWall + 1, col, height: bottomHeight, width, setIsDisabled, speed });
+    speed,
+  });
+  await recursiveDivision({
+    grid,
+    startTile,
+    endTile,
+    row: makeWallAt + 1,
+    col,
+    height: height - (makeWallAt - row + 1) / 2,
+    width,
+    setIsDisabled,
+    speed,
+  });
 }
