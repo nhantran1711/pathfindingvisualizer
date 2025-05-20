@@ -3,9 +3,15 @@
 export type AlgorithmType = "DIJKSTRA" | "A_START" | "BFS" | "DFS";
 
 export type MazeType = "NONE" | "BINARY_TREE" | "RECURSIVE_DIV";
+
 export interface MazeSelectType {
     name: string;
     value: MazeType;
+}
+
+export interface AlgoSelectType {
+    name: string;
+    value: AlgorithmType
 }
 
 export type TileType = {

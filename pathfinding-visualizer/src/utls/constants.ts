@@ -1,6 +1,6 @@
 // Number of Rows and Cols in the Grid
 
-import type { MazeSelectType, SpeedSelectType} from "./types";
+import type { AlgoSelectType, MazeSelectType, SpeedSelectType} from "./types";
 
 export const MAX_ROWS = 39;
 export const MAX_COLS = 49;
@@ -58,3 +58,12 @@ export const SPEEDS: SpeedSelectType[] = [
 
 // SLEEP CONSTANTS
 export const SLEEP_TIME = 8;
+
+
+// Alogrithm graph
+export const PATH_ALGO: AlgoSelectType[] = [
+    {name: "DIJKSTRA", value: "DIJKSTRA"},
+    {name: "DIJKSTRA", value: "DIJKSTRA"},
+    {name: "BFS", value: "BFS"},
+    {name: "DFS", value: "DFS"}
+]

@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { usePathfinding } from "../hooks/usePathfinding";
 import { useTile } from "../hooks/useTile";
-import { MAZE } from "../utls/constants";
+import { MAZE, PATH_ALGO } from "../utls/constants";
 import { resetGrid } from "../utls/resetGrid";
-import type { MazeType } from "../utls/types";
+import type { AlgorithmType, MazeType } from "../utls/types";
 import { Select } from "./Select";
 import { runMazeAlgo } from "../utls/runMazeAlgo";
 import { useSpeed } from "../hooks/useSpeed";
+import { PlayButton } from "./PlayButton";
 
 export function Nav() {
     const [isDisabled, setIsDisabled] = useState(false);
-    const { maze, setMaze, grid, setGrid, setIsGraphVisualized } = usePathfinding();
+    const { maze, setMaze, grid, setGrid, isGraphVisualized, setIsGraphVisualized, algorithm, setAlgorithm } = usePathfinding();
     const { startTile, endTile } = useTile();
     const { speed } = useSpeed();
 
@@ -24,6 +25,7 @@ export function Nav() {
 
         setMaze(mazeType);
         setIsDisabled(true);
+        setIsGraphVisualized(false);
 
         // RUnning maze algo
         runMazeAlgo({
@@ -38,6 +40,18 @@ export function Nav() {
         const newGrid = grid.slice();
         setGrid(newGrid);
         setIsDisabled(false) //  maze generation changed the grid -> previouse grapsh visualization is invalid
+    }
+
+    // Play button Run visualizer
+    const handlingRunVisualizer = (algo: AlgorithmType) => {
+        if (isGraphVisualized) {
+            setIsGraphVisualized(false);
+            resetGrid({grid: grid.slice(), startTile, endTile});
+            return true;
+        }
+
+        // Run algorithm
+        
     }
 
     return (
@@ -55,6 +69,21 @@ export function Nav() {
                             // Handling generate mazes
                             handlingGenerateMaze(e.target.value as MazeType);
                         }}
+                    />
+                    <Select 
+                        label="Graph"
+                        value={algorithm}
+                        options={PATH_ALGO}
+                        onChange={(e) => {
+                            // Set graphs
+                            setAlgorithm(e.target.value as AlgorithmType)
+                        }}
+                    />
+
+                    <PlayButton 
+                    handlingRunVisualizer(() => {})
+                    isDisabled={isDisabled} 
+                    isGraphVisualized={isGraphVisualized}                    
                     />
                 </div>
             </div>
