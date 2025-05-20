@@ -1,5 +1,6 @@
 // Shortest path by marking transverse tile
 
+import { isEqual } from "../../utls/helpers";
 import type { GridType, TileType } from "../../utls/types";
 
 export const bfs = (
@@ -23,5 +24,13 @@ export const bfs = (
         if (tile.distance == Infinity) {
             break;
         }
-    }
+        tile.isTraversed = true;
+        traversedTile.push(tile);
+
+        if (isEqual(tile, endTile)) {
+            break;
+        }
+
+
+    }   
 }

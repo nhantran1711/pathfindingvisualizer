@@ -20,6 +20,8 @@ export const runAlgo = ({
         case "A_START":
             return null;
         case "DIJKSTRA":
-        return null;
+            return null;
+        default:
+            return null;
     }
 }
