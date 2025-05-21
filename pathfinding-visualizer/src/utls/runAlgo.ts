@@ -1,5 +1,6 @@
 import { bfs } from "../lib/algo/bfs";
 import { dfs } from "../lib/algo/dfs";
+import { dijkstra } from "../lib/algo/dijkstra";
 import type { AlgorithmType, GridType, TileType } from "./types";
 
 export const runAlgo = ({
@@ -21,8 +22,8 @@ export const runAlgo = ({
             return dfs(grid, startTile, endTile);
         // case "A_START":
         //     return;
-        // case "DIJKSTRA":
-        //     return;
+        case "DIJKSTRA":
+            return dijkstra(grid, startTile, endTile);
         default:
             return bfs(grid, startTile, endTile);
     }

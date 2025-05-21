@@ -101,3 +101,12 @@ export const checkDFSStack = (tile: TileType,  stack: TileType[]) => {
     }
     return false;
 }
+
+export const dropFromQueue = (tile: TileType, queue: TileType[]) => {
+    for (let i = 0; i < queue.length; i ++) {
+        if (isEqual(tile, queue[i])) {
+            queue.slice(i, 1);
+            break;
+        }
+    }
+}
