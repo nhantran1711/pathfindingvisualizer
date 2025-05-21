@@ -58,7 +58,7 @@ export const SPEEDS: SpeedSelectType[] = [
 
 // SLEEP CONSTANTS
 export const SLEEP_TIME = 8;
-
+export const EXTENDED_TIME_TIME = 30;
 
 // Alogrithm graph
 export const PATH_ALGO: AlgoSelectType[] = [
