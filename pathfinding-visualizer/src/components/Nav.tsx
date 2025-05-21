@@ -51,7 +51,7 @@ export function Nav() {
         }
 
         // Run algorithm
-        
+
     }
 
     return (
@@ -80,11 +80,11 @@ export function Nav() {
                         }}
                     />
 
-                    <PlayButton 
+                    {/* <PlayButton 
                     handlingRunVisualizer(() => {})
                     isDisabled={isDisabled} 
                     isGraphVisualized={isGraphVisualized}                    
-                    />
+                    /> */}
                 </div>
             </div>
         </div>
