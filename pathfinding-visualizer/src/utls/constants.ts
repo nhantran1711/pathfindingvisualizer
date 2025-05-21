@@ -45,9 +45,9 @@ export const PATH_TILE_STYLE = BASE_TILE_STYLE + " bg-green-500";
 
 // Maze constant
 export const MAZE: MazeSelectType[] = [
-    {name: "NONE", value: "NONE"},
-    {name: "BINARY TREE", value: "BINARY_TREE"},
-    {name: "RECURSIVE DIVISON", value: "RECURSIVE_DIV"}
+    {name: "Custom", value: "NONE"},
+    {name: "Binary Tree", value: "BINARY_TREE"},
+    {name: "Recursive Division", value: "RECURSIVE_DIV"}
 ]
 
 export const SPEEDS: SpeedSelectType[] = [
@@ -62,7 +62,8 @@ export const EXTENDED_SLEEP_TIME = 30;
 
 // Alogrithm graph
 export const PATH_ALGO: AlgoSelectType[] = [
-    {name: "DIJKSTRA", value: "DIJKSTRA"},
+    {name: "Dijkstra", value: "DIJKSTRA"},
+    {name: "A-Star", value: "A_START"},
     {name: "BFS", value: "BFS"},
     {name: "DFS", value: "DFS"}
 ]

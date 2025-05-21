@@ -91,3 +91,13 @@ export const getRandInt = (min: number, max: number) => {
     num = Math.floor(Math.random() * (max - min) + min);
     return num;
 }
+
+// Check Staks for DFS
+export const checkDFSStack = (tile: TileType,  stack: TileType[]) => {
+    for (let i = 0; i < stack.length; i ++ ) {
+        if (isEqual(stack[i], tile)) {
+            return true;
+        }
+    }
+    return false;
+}

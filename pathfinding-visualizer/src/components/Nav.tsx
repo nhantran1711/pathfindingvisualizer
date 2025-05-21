@@ -3,7 +3,7 @@ import { usePathfinding } from "../hooks/usePathfinding";
 import { useTile } from "../hooks/useTile";
 import { EXTENDED_SLEEP_TIME, MAZE, PATH_ALGO, SLEEP_TIME, SPEEDS } from "../utls/constants";
 import { resetGrid } from "../utls/resetGrid";
-import type { AlgorithmType, MazeType } from "../utls/types";
+import type { AlgorithmType, MazeType, SpeedType } from "../utls/types";
 import { Select } from "./Select";
 import { runMazeAlgo } from "../utls/runMazeAlgo";
 import { useSpeed } from "../hooks/useSpeed";
@@ -15,7 +15,7 @@ export function Nav({isVisualizationRunningRef} : {isVisualizationRunningRef: Re
     const [isDisabled, setIsDisabled] = useState(false);
     const { maze, setMaze, grid, setGrid, isGraphVisualized, setIsGraphVisualized, algorithm, setAlgorithm } = usePathfinding();
     const { startTile, endTile } = useTile();
-    const { speed } = useSpeed();
+    const { speed , setSpeed} = useSpeed();
 
     const handlingGenerateMaze = (mazeType: MazeType) => {
         if (mazeType === "NONE") {
@@ -99,6 +99,15 @@ export function Nav({isVisualizationRunningRef} : {isVisualizationRunningRef: Re
                         onChange={(e) => {
                             // Set graphs
                             setAlgorithm(e.target.value as AlgorithmType)
+                        }}
+                    />
+                    <Select 
+                        label="Speed"
+                        value={speed}
+                        options={SPEEDS}
+                        onChange={(e) => {
+                            // Set speed
+                            setSpeed(parseInt(e.target.value) as SpeedType)
                         }}
                     />
 

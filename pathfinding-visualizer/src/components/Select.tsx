@@ -18,7 +18,7 @@ export function Select({
             <label className="text-xs text-indigo-600 ml-1" htmlFor={label}> {label}</label>
             <select 
                 disabled={isDisabled}
-                className="bg-gray-700 cursor-pointer hover:bg-gray-400 transition ease-in active:ring-0 p-2 min-w-[200px] sm:min-w-full"
+                className="bg-gray-700 rounded-md cursor-pointer hover:bg-gray-400 transition ease-in active:ring-0 p-2 min-w-[200px] sm:min-w-full"
                 id={label}
                 value = {value}
                 onChange={onChange}
