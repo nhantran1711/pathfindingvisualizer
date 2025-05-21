@@ -1,6 +1,8 @@
 // Shortest path by marking transverse tile
 
+import { getUntraversedNeighbors } from "../../utls/getUntraversedNeighbors";
 import { isEqual } from "../../utls/helpers";
+import { isQueue } from "../../utls/isQueue";
 import type { GridType, TileType } from "../../utls/types";
 
 export const bfs = (
@@ -31,6 +33,25 @@ export const bfs = (
             break;
         }
 
+        const neighbors = getUntraversedNeighbors(grid, tile);
+        for (let i = 0; i < neighbors.length; i ++) {
+            if (!isQueue(neighbors[i], untraversed)) {
+                const neighbor = neighbors[i];
+                neighbor.distance = tile.distance + 1;
+                neighbor.parent = tile;
+                untraversed.push(neighbor);
+            }
 
+        }
     }   
+
+    const path = []
+    let tile = grid[endTile.row][endTile.col];
+    while (tile !== null) {
+        tile.isPath = true;
+        path.unshift(tile);
+        tile = tile.parent!;
+    }
+
+    return { traversedTile, path}
 }
