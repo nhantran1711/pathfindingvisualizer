@@ -1,8 +1,11 @@
-import { transform } from 'typescript';
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    safelist: [
+    'animate-traversed',
+    'animate-path'
+  ],
   theme: {
     extend: {
       keyframes: {
@@ -43,7 +46,7 @@ export default {
           },
           "100%" : {
             transform: "scale(1)",
-          }
+          },
         },
         wall: {
           "0%": {
@@ -51,8 +54,13 @@ export default {
           },
           "100%": {
             transform: "scale(1)"
-          }
-        }
+          },
+        },
+      },
+      animation: {
+        traversed: "traversed 0.5s cubic-bezier(0, 0, 0.2, 1)",
+        path: "path 1.5s cubic-bezier(0, 0, 0.2, 1)",
+        wall: "wall 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
       }
     },
   },

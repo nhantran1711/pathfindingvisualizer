@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, type RefObject } from "react";
 import { usePathfinding } from "../hooks/usePathfinding";
 import { useTile } from "../hooks/useTile";
-import { MAZE, PATH_ALGO } from "../utls/constants";
+import { EXTENDED_SLEEP_TIME, MAZE, PATH_ALGO, SLEEP_TIME, SPEEDS } from "../utls/constants";
 import { resetGrid } from "../utls/resetGrid";
 import type { AlgorithmType, MazeType } from "../utls/types";
 import { Select } from "./Select";
@@ -9,8 +9,9 @@ import { runMazeAlgo } from "../utls/runMazeAlgo";
 import { useSpeed } from "../hooks/useSpeed";
 import { PlayButton } from "./PlayButton";
 import { runAlgo } from "../utls/runAlgo";
+import { animatePath } from "../utls/animatePath";
 
-export function Nav() {
+export function Nav({isVisualizationRunningRef} : {isVisualizationRunningRef: RefObject<boolean>}) {
     const [isDisabled, setIsDisabled] = useState(false);
     const { maze, setMaze, grid, setGrid, isGraphVisualized, setIsGraphVisualized, algorithm, setAlgorithm } = usePathfinding();
     const { startTile, endTile } = useTile();
@@ -62,13 +63,24 @@ export function Nav() {
     console.log('Traversed tile', traversedTiles);
     console.log('Path', path);
 
+    animatePath(traversedTiles, path, startTile, endTile, speed)
+    setIsDisabled(true);
+    isVisualizationRunningRef.current = true;
+    setTimeout(() => {
+        const newGrid = grid.slice();
+        setGrid(newGrid);
+        setIsGraphVisualized(true)
+        setIsDisabled(false);
+        isVisualizationRunningRef.current = false;
+    }, SLEEP_TIME * (traversedTiles.length + SLEEP_TIME * 2) + EXTENDED_SLEEP_TIME * (path.length + 60) * SPEEDS.find((s) => s.value === speed)!.value);
+
     }
 
     return (
         <div className="flex items-center justify-center min-h-[4.5rem] border-b shadow-gray-500 sm:px-5 px-0">
             <div className="flex items-center lg:justify-between justify-center w-full sm:w-[52rem]">
                 <h1 className="lg:flex hideen w-[40%] text-2xl pl-1">
-                    Pathfinding Visualizer Project
+                    Pathfinding Visualizer 
                 </h1>
                 <div className="flex sm:items-end items-center justify-start sm:justify-between sm:flex-row flex-col sm:space-y-0 space-y-2 sm:py-0 py-4 sm:space-x-5">
                     <Select 
