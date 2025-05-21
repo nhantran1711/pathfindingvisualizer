@@ -1,4 +1,4 @@
-import { useState, type MouseEvent } from "react";
+import { useState } from "react";
 import { usePathfinding } from "../hooks/usePathfinding";
 import { useTile } from "../hooks/useTile";
 import { MAZE, PATH_ALGO } from "../utls/constants";
@@ -8,6 +8,7 @@ import { Select } from "./Select";
 import { runMazeAlgo } from "../utls/runMazeAlgo";
 import { useSpeed } from "../hooks/useSpeed";
 import { PlayButton } from "./PlayButton";
+import { runAlgo } from "../utls/runAlgo";
 
 export function Nav() {
     const [isDisabled, setIsDisabled] = useState(false);
@@ -43,7 +44,7 @@ export function Nav() {
     }
 
     // Play button Run visualizer
-    const handlingRunVisualizer = (algo: AlgorithmType) => {
+    const handlingRunVisualizer = () => {
         if (isGraphVisualized) {
             setIsGraphVisualized(false);
             resetGrid({grid: grid.slice(), startTile, endTile});
@@ -51,6 +52,15 @@ export function Nav() {
         }
 
         // Run algorithm
+        const { traversedTiles, path } = runAlgo({
+            algorithm,
+            grid,
+            startTile,
+            endTile
+    })
+
+    console.log('Traversed tile', traversedTiles);
+    console.log('Path', path);
 
     }
 
@@ -80,11 +90,11 @@ export function Nav() {
                         }}
                     />
 
-                    {/* <PlayButton 
-                    handlingRunVisualizer(() => {})
+                    <PlayButton 
+                    handlingRunVisualizer={handlingRunVisualizer}
                     isDisabled={isDisabled} 
                     isGraphVisualized={isGraphVisualized}                    
-                    /> */}
+                    />
                 </div>
             </div>
         </div>

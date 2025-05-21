@@ -1,3 +1,4 @@
+import { bfs } from "../lib/algo/bfs";
 import type { AlgorithmType, GridType, TileType } from "./types";
 
 export const runAlgo = ({
@@ -14,14 +15,14 @@ export const runAlgo = ({
     // switch cases for running algorithms
     switch(algorithm) {
         case "BFS":
-            return null;
-        case "DFS":
-            return null;
-        case "A_START":
-            return null;
-        case "DIJKSTRA":
-            return null;
+            return bfs(grid, startTile, endTile);
+        // case "DFS":
+        //     return;
+        // case "A_START":
+        //     return;
+        // case "DIJKSTRA":
+        //     return;
         default:
-            return null;
+            return bfs(grid, startTile, endTile);
     }
 }
