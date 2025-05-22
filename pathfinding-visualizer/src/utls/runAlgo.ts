@@ -20,8 +20,8 @@ export const runAlgo = ({
             return bfs(grid, startTile, endTile);
         case "DFS":
             return dfs(grid, startTile, endTile);
-        // case "A_START":
-        //     return;
+        case "A_STAR":
+            return aStart
         case "DIJKSTRA":
             return dijkstra(grid, startTile, endTile);
         default:

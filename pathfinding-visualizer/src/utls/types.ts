@@ -1,6 +1,6 @@
 // From the context
 
-export type AlgorithmType = "DIJKSTRA" | "A_START" | "BFS" | "DFS";
+export type AlgorithmType = "DIJKSTRA" | "A_STAR" | "BFS" | "DFS";
 
 export type MazeType = "NONE" | "BINARY_TREE" | "RECURSIVE_DIV";
 

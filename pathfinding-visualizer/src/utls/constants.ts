@@ -63,7 +63,7 @@ export const EXTENDED_SLEEP_TIME = 30;
 // Alogrithm graph
 export const PATH_ALGO: AlgoSelectType[] = [
     {name: "Dijkstra", value: "DIJKSTRA"},
-    {name: "A-Star", value: "A_START"},
+    {name: "A-Star", value: "A_STAR"},
     {name: "BFS", value: "BFS"},
     {name: "DFS", value: "DFS"}
 ]
