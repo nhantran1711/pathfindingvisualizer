@@ -1,3 +1,4 @@
+import { aStart } from "../lib/algo/aStart";
 import { bfs } from "../lib/algo/bfs";
 import { dfs } from "../lib/algo/dfs";
 import { dijkstra } from "../lib/algo/dijkstra";
@@ -21,7 +22,7 @@ export const runAlgo = ({
         case "DFS":
             return dfs(grid, startTile, endTile);
         case "A_STAR":
-            return aStart
+            return aStart(grid, startTile, endTile);
         case "DIJKSTRA":
             return dijkstra(grid, startTile, endTile);
         default:

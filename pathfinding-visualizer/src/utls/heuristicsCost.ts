@@ -18,4 +18,18 @@ export const initHeuristicsCost = (grid: GridType, endTile: TileType) => {
         }
         heuristicsCost.push(row);
     }
+    return heuristicsCost;
+}
+
+
+export const initFunctionCost = () => {
+    const functionCost = [];
+    for (let i = 0; i < MAX_ROWS; i ++) {
+        const row = [];
+        for (let j = 0; j < MAX_COLS; j ++ ) {
+            row.push(Infinity);
+        } 
+        functionCost.push(row);
+    }
+    return functionCost;
 }
