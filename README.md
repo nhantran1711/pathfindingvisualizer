@@ -41,12 +41,16 @@ Generate structured obstacle layouts using:
 
 ---
 
+
+
 ### 🔗 Deployment
 
 This project is deployed using **Netlify**.
 
 **Live Site**: [pathfindingsimulationbysimon.netlify.app](https://pathfindingsimulationbysimon.netlify.app)
   
+
+
 
 ### 🛠 Installation
 
