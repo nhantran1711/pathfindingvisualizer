@@ -1,4 +1,4 @@
-# 🧭 Pathfinding Visualizer
+# Pathfinding Visualizer
 
 An interactive and educational pathfinding visualizer built from scratch using modern web technologies. This project allows users to visualize how various search and maze generation algorithms operate on a grid in real-time.
 
@@ -9,30 +9,30 @@ An interactive and educational pathfinding visualizer built from scratch using m
 
 ![Tailwind CSS](https://img.shields.io/badge/Styled%20with-TailwindCSS-38B2AC?logo=tailwindcss&logoColor=white)
 
-## ✨ Features
+## Features
 
-### 🔎 Pathfinding Algorithms
+### Pathfinding Algorithms
 Visualize the inner workings of popular graph traversal algorithms:
-- 🛤️ **Dijkstra's Algorithm** – guarantees the shortest path
-- ⭐ **A\*** – optimizes search using heuristics
-- 🌐 **Breadth-First Search (BFS)** – explores evenly across all directions
-- 🔍 **Depth-First Search (DFS)** – explores deeply before backtracking
+- **Dijkstra's Algorithm** – guarantees the shortest path
+- **A\*** – optimizes search using heuristics
+- **Breadth-First Search (BFS)** – explores evenly across all directions
+- **Depth-First Search (DFS)** – explores deeply before backtracking
 
 
-### 🧩 Maze Generation Algorithms
+### Maze Generation Algorithms
 Generate structured obstacle layouts using:
-- 🧱 **Recursive Division** – creates complex walls through space partitioning
-- 🌲 **Binary Tree** – builds mazes with a randomized approach
+- **Recursive Division** – creates complex walls through space partitioning
+- **Binary Tree** – builds mazes with a randomized approach
 
 
-## 🖥️ Technologies Used
+## Technologies Used
 - **React** – UI library
 - **Tailwind CSS** – utility-first CSS for responsive design
 - **TypeScript** – type safety
 - **Custom Hooks & Context API** – state and logic management
 
 
-## 🚀 Getting Started
+## Getting Started
 
 ### ⚙️ Prerequisites
 
@@ -43,7 +43,7 @@ Generate structured obstacle layouts using:
 
 
 
-### 🔗 Deployment
+### Deployment
 
 This project is deployed using **Netlify**.
 
@@ -52,7 +52,7 @@ This project is deployed using **Netlify**.
 
 
 
-### 🛠 Installation
+### Installation
 
 Clone the repo:
 ```bash
@@ -74,7 +74,7 @@ npm run dev
 Then open http://localhost:5173 in your browser.
 
 
-## 🧠 Learning Outcomes
+## Learning Outcomes
 This project helped me solidify concepts in:
 
 Graph theory and traversal algorithms in DSA
@@ -86,7 +86,7 @@ Tailwind CSS responsive layouts
 Writing reusable and scalable code with TypeScript
 
 
-## 👨‍💻 Author
+## Author
 Simon Tran
 
 🔗 GitHub: @nhantran1711
@@ -95,7 +95,7 @@ Simon Tran
 ## 📄 License
 This project is licensed under the MIT License – see the LICENSE file for details.
 
-## 🙌 Acknowledgements
+## Acknowledgements
 Inspired by visual algorithm tools used in education
 
 TailwindCSS documentation and React docs for UI and component design
